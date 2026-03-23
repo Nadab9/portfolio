@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -1024,4 +1025,1032 @@ revealEls.forEach(el => observer.observe(el));
 </script>
 
 </body>
+=======
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outil web de sensibilisation à la cybersécurité — Nada Bouchtita</title>
+<link rel="icon" type="image/png" href="assets/ninja-girl.png.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===========================
+   VARIABLES & RESET
+=========================== */
+:root {
+  --cream: #F7F4EF;
+  --white: #FDFCFA;
+  --border: #E0DBD4;
+  --text-primary: #1A1814;
+  --text-secondary: #5A5650;
+  --text-muted: #9A9590;
+  --navy: #1C2B4A;
+  --steel: #3D5A80;
+  --steel-light: #6B8CAE;
+  --accent: #8B6F5E;
+  --accent-light: #C4A898;
+  --olive: #6B7055;
+  --tag-bg: #EEF2F7;
+  --tag-text: #3D5A80;
+  --card-shadow: 0 2px 20px rgba(28,43,74,0.06);
+  --card-shadow-hover: 0 8px 40px rgba(28,43,74,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(247,244,239,0.93);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow var(--transition);
+}
+nav.scrolled { box-shadow: 0 4px 24px rgba(28,43,74,0.08); }
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color var(--transition);
+}
+.nav-back:hover { color: var(--navy); }
+.nav-back-arrow { font-size: 0.9rem; transition: transform var(--transition); }
+.nav-back:hover .nav-back-arrow { transform: translateX(-3px); }
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.nav-logo span { color: var(--steel); }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ===========================
+   HERO
+=========================== */
+.hero {
+  padding: 120px 2rem 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-shape {
+  position: absolute;
+  top: 0; right: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(135deg, #EEF2F7 0%, #E4EBF5 100%);
+  clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 0;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+  font-family: 'Space Mono', monospace;
+}
+.hero-breadcrumb a { color: var(--steel); text-decoration: none; }
+.hero-breadcrumb a:hover { color: var(--navy); }
+.hero-breadcrumb-sep { color: var(--border); }
+
+.hero-badges {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.6rem;
+  animation: fadeUp 0.5s ease both;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  border: 1px solid;
+}
+.badge-academic {
+  background: rgba(139,111,94,0.08);
+  border-color: rgba(139,111,94,0.25);
+  color: var(--accent);
+}
+.badge-network {
+  background: rgba(61,90,128,0.08);
+  border-color: rgba(61,90,128,0.2);
+  color: var(--steel);
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  margin-bottom: 1.2rem;
+  animation: fadeUp 0.5s 0.1s ease both;
+  max-width: 780px;
+}
+.hero-title em { font-style: italic; color: var(--steel); }
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.5s 0.2s ease both;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  animation: fadeUp 0.5s 0.3s ease both;
+}
+
+.hero-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  border: 1px solid rgba(61,90,128,0.15);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeUp 0.5s 0.35s ease both;
+}
+
+.btn-primary {
+  background: var(--navy);
+  color: var(--white);
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.btn-primary:hover { background: var(--steel); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(28,43,74,0.18); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1.5px solid var(--navy);
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.btn-outline:hover { background: var(--navy); color: var(--white); transform: translateY(-2px); }
+
+/* ===========================
+   METRICS BAR
+=========================== */
+.metrics-bar {
+  background: var(--navy);
+  padding: 0;
+}
+.metrics-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.metric-item {
+  padding: 2rem 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  text-align: center;
+}
+.metric-item:last-child { border-right: none; }
+.metric-number {
+  font-family: 'Space Mono', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.metric-number span { color: var(--steel-light); }
+.metric-label {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ===========================
+   SECTION STYLES
+=========================== */
+.section { padding: 90px 2rem; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-alt { background: var(--white); }
+
+.section-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 0.7rem;
+  display: block;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 300;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.section-line {
+  width: 40px; height: 2px;
+  background: var(--steel);
+  margin-bottom: 2.5rem;
+  border-radius: 2px;
+}
+.section-lead {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 640px;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+/* ===========================
+   CONTEXT SECTION
+=========================== */
+.context-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 4rem;
+  align-items: start;
+}
+.context-text p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.85;
+  margin-bottom: 1.3rem;
+}
+.context-text p:first-child {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.sites-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+}
+.sites-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.02em;
+}
+.site-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+.site-item:last-child { border-bottom: none; }
+.site-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dot-blue { background: var(--steel); }
+.dot-navy { background: var(--navy); }
+.dot-accent { background: var(--accent); }
+.dot-olive { background: var(--olive); }
+.dot-dark { background: #3A3A4A; }
+
+.site-name { font-weight: 600; color: var(--navy); min-width: 100px; }
+.site-role { color: var(--text-muted); font-size: 0.8rem; }
+
+/* ===========================
+   OBJECTIVES
+=========================== */
+.objectives-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.obj-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  transition: box-shadow var(--transition), transform var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.obj-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--steel), var(--steel-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+.obj-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-3px); }
+.obj-card:hover::before { transform: scaleX(1); }
+.obj-number {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--steel);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.8rem;
+}
+.obj-icon { font-size: 1.4rem; margin-bottom: 0.7rem; }
+.obj-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+.obj-text { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7; }
+
+/* ===========================
+   VISUAL / IMAGE SECTIONS
+=========================== */
+.visual-section { padding: 0; }
+
+.image-hero-wrap {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
+  background: var(--navy);
+}
+.image-hero-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.image-hero-wrap:hover img { transform: scale(1.01); }
+
+.image-caption {
+  padding: 1.2rem 1.5rem;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.caption-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+.caption-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--steel);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+.caption-text { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.65; }
+
+/* ===========================
+   TECHNICAL FOCUS
+=========================== */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+.tech-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.tech-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-2px); }
+
+.tech-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+.tech-icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.bg-steel { background: rgba(61,90,128,0.1); }
+.bg-navy { background: rgba(28,43,74,0.08); }
+.bg-accent { background: rgba(139,111,94,0.1); }
+.bg-olive { background: rgba(107,112,85,0.1); }
+
+.tech-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.2;
+}
+.tech-card-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.tech-card-text {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.tech-tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  background: rgba(61,90,128,0.07);
+  color: var(--steel);
+  border: 1px solid rgba(61,90,128,0.15);
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+}
+
+/* ===========================
+   IMAGE GRID
+=========================== */
+.img-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.img-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
+  background: var(--white);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.img-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-3px); }
+
+.img-card-photo {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  background: var(--navy);
+  transition: transform 0.5s ease;
+}
+.img-card:hover .img-card-photo { transform: scale(1.02); }
+.img-card-body { padding: 1.2rem 1.4rem; }
+.img-card-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 0.3rem;
+}
+.img-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+.img-card-text { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.65; }
+
+/* ===========================
+   LEARNINGS
+=========================== */
+.learnings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.learning-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.2rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: box-shadow var(--transition);
+}
+.learning-item:hover { box-shadow: var(--card-shadow); }
+.learning-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--steel);
+  background: rgba(61,90,128,0.08);
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.learning-content h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+.learning-content p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ===========================
+   SKILLS
+=========================== */
+.skills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+.skill-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--navy);
+  transition: all var(--transition);
+}
+.skill-pill:hover {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(28,43,74,0.15);
+}
+.skill-pill-icon { font-size: 0.9rem; }
+
+/* ===========================
+   CONCLUSION
+=========================== */
+.conclusion-box {
+  background: var(--navy);
+  border-radius: var(--radius);
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.conclusion-box::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(61,90,128,0.3) 0%, transparent 70%);
+}
+.conclusion-box::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(107,140,174,0.15) 0%, transparent 70%);
+}
+.conclusion-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--steel-light);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+.conclusion-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 300;
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+}
+.conclusion-title em { font-style: italic; color: var(--steel-light); }
+.conclusion-text {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.8;
+  max-width: 680px;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+.conclusion-actions { display: flex; gap: 1rem; flex-wrap: wrap; position: relative; z-index: 1; }
+.btn-white {
+  background: white;
+  color: var(--navy);
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.btn-white:hover { background: var(--cream); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+.btn-ghost {
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.6); color: white; transform: translateY(-2px); }
+.hero-architecture-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .hero-architecture-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.hero-main-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-media .image-hero-wrap {
+  max-width: 100%;
+}
+
+.hero-media .image-hero-wrap img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 900px) {
+  .hero-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-media .image-hero-wrap img {
+    height: auto;
+  }
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+footer strong { color: rgba(255,255,255,0.75); }
+footer a { color: var(--steel-light); text-decoration: none; }
+footer a:hover { color: white; }
+
+/* ===========================
+   DIVIDER
+=========================== */
+.divider {
+  height: 1px;
+  background: var(--border);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 900px) {
+  .context-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .objectives-grid { grid-template-columns: 1fr 1fr; }
+  .tech-grid { grid-template-columns: 1fr; }
+  .img-grid { grid-template-columns: 1fr; }
+  .learnings-grid { grid-template-columns: 1fr; }
+  .metrics-inner { grid-template-columns: repeat(2, 1fr); }
+  .hero-bg-shape { display: none; }
+  .conclusion-box { padding: 2rem; }
+}
+@media (max-width: 600px) {
+  .objectives-grid { grid-template-columns: 1fr; }
+  .metrics-inner { grid-template-columns: 1fr 1fr; }
+  .nav-tag { display: none; }
+  .hero { padding: 100px 1.2rem 60px; }
+  .section { padding: 60px 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===========================
+     NAVBAR
+=========================== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-back">
+      <span class="nav-back-arrow">←</span> Retour au portfolio
+    </a>
+    <a href="index.html" class="nav-logo">N<span>.</span></a>
+    <div class="nav-right">
+      <span class="nav-tag">05 / Académique</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ===========================
+     HERO
+=========================== -->
+<section class="hero">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-inner">
+
+    <div class="hero-breadcrumb">
+      <a href="index.html">Portfolio</a>
+      <span class="hero-breadcrumb-sep">/</span>
+      <a href="index.html#projets">Projets</a>
+      <span class="hero-breadcrumb-sep">/</span>
+      <span>Nexiward</span>
+    </div>
+
+    <div class="hero-badges">
+      <span class="badge badge-academic">Projet personnel</span>
+      <span class="badge badge-network">Cybersécurité</span>
+      <span class="badge badge-network">Développement Web</span>
+    </div>
+    
+    <div class="hero-main-grid">
+  <div class="hero-content">
+    <h1 class="hero-title">Nexiward — Plateforme<br><em>cybersécurité</em></h1>
+
+    <p class="hero-subtitle">
+    Nexiward est une application web dédiée à la sensibilisation et à l’analyse des risques en cybersécurité. Ce projet personnel a été conçu pour reproduire des mécanismes réels utilisés dans les outils professionnels de sécurité, tout en restant accessible et pédagogique.
+    L’application permet d’évaluer les pratiques numériques d’un utilisateur à travers plusieurs modules interactifs : analyse de mots de passe, détection de fuites de données, analyse de sites web et simulation de phishing.
+    Ce projet met en avant ma capacité à relier développement web et cybersécurité, en intégrant des logiques d’analyse concrètes, des systèmes de scoring de risque et des mécanismes inspirés du monde professionnel.
+    </p>
+
+    <div class="hero-tags">
+      <span class="hero-tag">HTML/CSS/JS</span>
+      <span class="hero-tag">FastAPI</span>
+      <span class="hero-tag">API REST</span>
+      <span class="hero-tag">zxcvbn</span>
+      <span class="hero-tag">Analyse de risque</span>
+      <span class="hero-tag">Phishing</span>
+      <span class="hero-tag">Data breach</span>
+      <span class="hero-tag">Sécurité web</span>
+      <span class="hero-tag">Validation input</span>
+      <span class="hero-tag">JSON</span>
+    </div>
+
+    <div class="hero-actions">
+        <a href="#objectifs" class="btn-primary">
+            ↓ Voir les Objectifs
+        </a>
+    </div>
+  </div>
+
+  <div class="hero-media">
+    <div class="image-hero-wrap reveal">
+      <img src="assets/web1.png" alt="Interface Nexiward cybersécurité"/>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<!-- ===========================
+     SECTION 1 — OBJECTIFS
+=========================== -->
+<section class="section" id="objectifs">
+  <div class="section-inner">
+    <span class="section-tag">01 — Objectifs</span>
+    <h2 class="section-title">Ce que le projet propose</h2>
+    <div class="section-line"></div>
+
+    <div class="objectives-grid">
+      <div class="obj-card reveal reveal-delay-1">
+        <div class="obj-number">01</div>
+        <div class="obj-icon">🔑</div>
+        <div class="obj-title">Analyser la robustesse des mots de passe</div>
+        <div class="obj-text">Évaluer la sécurité d’un mot de passe avec zxcvbn, détecter les patterns humains et estimer le temps de cassage selon différents types d’attaques.</div>
+      </div>
+      <div class="obj-card reveal reveal-delay-2">
+        <div class="obj-number">02</div>
+        <div class="obj-icon">💧</div>
+        <div class="obj-title">Détecter les fuites de données</div>
+        <div class="obj-text">Vérifier si une adresse email apparaît dans la base de données Have I Been Pwned (HIBP) afin de déterminer si ses données ont été exposées lors de fuites connues.</div>
+     </div>
+      <div class="obj-card reveal reveal-delay-3">
+        <div class="obj-number">03</div>
+        <div class="obj-icon">🌐</div>
+        <div class="obj-title">Analyser la sécurité des sites web</div>
+        <div class="obj-text">Identifier les risques liés aux URL : HTTPS, certificat SSL, patterns suspects ou tentatives de phishing.</div>
+      </div>
+      <div class="obj-card reveal reveal-delay-1">
+        <div class="obj-number">04</div>
+        <div class="obj-icon">🎣</div>
+        <div class="obj-title">Simuler des attaques de phishing</div>
+        <div class="obj-text">Analyser des scénarios d’emails frauduleux et apprendre à détecter les signaux faibles utilisés dans les attaques réelles.</div>
+      </div>
+      <div class="obj-card reveal reveal-delay-2">
+        <div class="obj-number">05</div>
+        <div class="obj-icon">⚙️</div>
+        <div class="obj-title">Construire une architecture sécurisée</div>
+        <div class="obj-text">Mettre en place une communication frontend/backend via API REST avec validation des données et logique métier sécurisée.</div>
+      </div>
+      <div class="obj-card reveal reveal-delay-3">
+        <div class="obj-number">06</div>
+        <div class="obj-icon">🛡️</div>
+        <div class="obj-title">Sensibiliser aux bonnes pratiques</div>
+        <div class="obj-text">Fournir des recommandations concrètes pour améliorer la sécurité : MFA, mots de passe uniques, vigilance face aux attaques.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     FOOTER
+=========================== -->
+<footer>
+  <p>© 2026 <strong>Nada Bouchtita</strong> — <a href="index.html">Portfolio Cybersécurité</a> · Tous droits réservés</p>
+</footer>
+
+<!-- ===========================
+     JAVASCRIPT
+=========================== -->
+<script>
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+>>>>>>> d531b91389b1803fc7d9b491eb2cc470615b3912
 </html>
