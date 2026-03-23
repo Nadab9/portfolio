@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nada Bouchtita — Portfolio Cybersécurité</title>
+<link rel="icon" type="image/png" href="assets/ninja-girl.png.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===========================
+   CSS VARIABLES & RESET
+=========================== */
+:root {
+  --cream: #F7F4EF;
+  --white: #FDFCFA;
+  --warm-gray: #EEEBE5;
+  --border: #E0DBD4;
+  --text-primary: #1A1814;
+  --text-secondary: #5A5650;
+  --text-muted: #9A9590;
+  --navy: #1C2B4A;
+  --steel: #3D5A80;
+  --steel-light: #6B8CAE;
+  --accent: #8B6F5E;
+  --accent-light: #C4A898;
+  --olive: #6B7055;
+  --tag-bg: #EEF2F7;
+  --tag-text: #3D5A80;
+  --card-shadow: 0 2px 20px rgba(28, 43, 74, 0.06);
+  --card-shadow-hover: 0 8px 40px rgba(28, 43, 74, 0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(247, 244, 239, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow var(--transition);
+}
+
+nav.scrolled { box-shadow: 0 4px 24px rgba(28, 43, 74, 0.08); }
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.nav-logo span { color: var(--steel); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition);
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--steel);
+  transition: width var(--transition);
+}
+
+.nav-links a:hover { color: var(--navy); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: var(--navy);
+  color: var(--white) !important;
+  padding: 0.55rem 1.4rem;
+  border-radius: 50px;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.05em;
+  transition: background var(--transition), transform var(--transition) !important;
+}
+
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--steel) !important; color: var(--white) !important; transform: translateY(-1px); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px; height: 1.5px;
+  background: var(--navy);
+  transition: var(--transition);
+}
+
+/* ===========================
+   HERO SECTION
+=========================== */
+#accueil {
+  min-height: 100vh;
+  padding: 100px 2rem 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0; right: 0;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(135deg, #EEF2F7 0%, #E8EDF5 60%, #DDE5F0 100%);
+  clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 0;
+}
+
+.hero-bg-accent {
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(61, 90, 128, 0.08) 0%, transparent 70%);
+  z-index: 0;
+}
+
+.hero-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(61, 90, 128, 0.08);
+  border: 1px solid rgba(61, 90, 128, 0.2);
+  color: var(--steel);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1.8rem;
+  animation: fadeUp 0.6s ease both;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--steel);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+
+.hero-name em {
+  font-style: italic;
+  color: var(--steel);
+}
+
+.hero-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 440px;
+  margin-bottom: 1.8rem;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+.hero-title strong { color: var(--navy); font-weight: 600; }
+
+.hero-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  max-width: 400px;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeUp 0.6s 0.4s ease both;
+}
+
+.btn-primary {
+  background: var(--navy);
+  color: var(--white);
+  padding: 0.85rem 2rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: var(--steel);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(28, 43, 74, 0.2);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+  padding: 0.85rem 2rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border: 1.5px solid var(--navy);
+  cursor: pointer;
+  transition: all var(--transition);
+  display: inline-block;
+}
+
+.btn-outline:hover {
+  background: var(--navy);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Hero Illustration SVG */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+.hero-illustration {
+  width: 100%;
+  max-width: 460px;
+  position: relative;
+}
+
+/* Floating stats */
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  animation: fadeUp 0.6s 0.5s ease both;
+}
+
+.hero-stat-item {
+  text-align: left;
+}
+
+.hero-stat-number {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.hero-stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ===========================
+   SECTION STYLES
+=========================== */
+section { padding: 100px 2rem; }
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 1.2rem;
+}
+
+.section-line {
+  width: 48px;
+  height: 2px;
+  background: var(--steel);
+  margin-bottom: 3rem;
+  border-radius: 2px;
+}
+
+/* ===========================
+   ABOUT SECTION
+=========================== */
+#apropos { background: var(--white); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.about-text p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.4rem;
+  line-height: 1.85;
+}
+
+.about-text p:first-of-type {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.about-highlights {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+
+.about-highlights h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.highlight-item:last-child { border-bottom: none; }
+
+.highlight-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--steel);
+  margin-top: 0.6rem;
+  flex-shrink: 0;
+}
+
+.highlight-item p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ===========================
+   SKILLS SECTION
+=========================== */
+#competences { background: var(--cream); }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.skill-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-3px);
+}
+
+.skill-card-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+}
+
+.icon-navy { background: rgba(28, 43, 74, 0.08); color: var(--navy); }
+.icon-steel { background: rgba(61, 90, 128, 0.1); color: var(--steel); }
+.icon-accent { background: rgba(139, 111, 94, 0.1); color: var(--accent); }
+.icon-olive { background: rgba(107, 112, 85, 0.1); color: var(--olive); }
+.icon-slate { background: rgba(90, 86, 80, 0.08); color: var(--text-secondary); }
+
+.skill-card h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+  border: 1px solid rgba(61, 90, 128, 0.15);
+  transition: background var(--transition), color var(--transition);
+}
+
+.skill-tag:hover {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+}
+
+.skill-tag.lang {
+  background: rgba(139, 111, 94, 0.08);
+  color: var(--accent);
+  border-color: rgba(139, 111, 94, 0.2);
+}
+
+/* ===========================
+   PROJECTS SECTION
+=========================== */
+#projets { background: var(--white); }
+
+.projects-intro {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin-bottom: 3.5rem;
+}
+
+.projects-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 2.5rem 0 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow var(--transition), transform var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--steel), var(--steel-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+
+.project-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-4px);
+}
+
+.project-card:hover::before { transform: scaleX(1); }
+
+.project-card.academic::before {
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+}
+
+.project-number {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.project-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+
+.project-desc {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.project-tag {
+  background: rgba(61, 90, 128, 0.07);
+  color: var(--steel);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.25rem 0.65rem;
+  border-radius: 50px;
+  border: 1px solid rgba(61, 90, 128, 0.15);
+}
+
+.project-card.academic .project-tag {
+  background: rgba(139, 111, 94, 0.07);
+  color: var(--accent);
+  border-color: rgba(139, 111, 94, 0.18);
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--steel);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color var(--transition), gap var(--transition);
+}
+
+.project-link:hover { color: var(--navy); gap: 0.7rem; }
+
+.project-link svg { width: 14px; height: 14px; transition: transform var(--transition); }
+.project-link:hover svg { transform: translateX(2px); }
+
+/* ===========================
+   TIMELINE / PARCOURS SECTION
+=========================== */
+#parcours { background: var(--cream); }
+
+.timeline {
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 8px; left: 0;
+  width: 1.5px;
+  height: calc(100% - 16px);
+  background: var(--border);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 3rem;
+}
+
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-dot {
+  position: absolute;
+  left: -2.5rem;
+  top: 6px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--steel);
+  transform: translateX(calc(-50% + 0.75px));
+}
+
+.timeline-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--steel);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.timeline-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem 2rem;
+  transition: box-shadow var(--transition);
+}
+
+.timeline-card:hover { box-shadow: var(--card-shadow-hover); }
+
+.timeline-school {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.4rem;
+}
+
+.timeline-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+
+.timeline-desc {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* ===========================
+   CONTACT SECTION
+=========================== */
+#contact { background: var(--white); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.contact-intro {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.85;
+  margin-bottom: 2.5rem;
+}
+
+.available-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(107, 112, 85, 0.08);
+  border: 1.5px solid rgba(107, 112, 85, 0.25);
+  color: var(--olive);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.65rem 1.2rem;
+  border-radius: 50px;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.04em;
+}
+
+.available-badge::before {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--olive);
+  animation: pulse 2s infinite;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 1.5rem;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-link::after {
+  content: '→';
+  position: absolute;
+  right: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  transition: transform var(--transition), color var(--transition);
+}
+
+.contact-link:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+  transform: translateX(4px);
+}
+
+.contact-link:hover::after { transform: translateX(4px); color: var(--white); }
+
+.contact-link-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  background: rgba(61, 90, 128, 0.08);
+  color: var(--steel);
+  flex-shrink: 0;
+  transition: background var(--transition), color var(--transition);
+}
+
+.contact-link:hover .contact-link-icon {
+  background: rgba(255,255,255,0.15);
+  color: var(--white);
+}
+
+.contact-link-info { flex: 1; }
+.contact-link-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.15rem;
+  transition: color var(--transition);
+}
+
+.contact-link:hover .contact-link-label { color: rgba(255,255,255,0.7); }
+
+.contact-link-value {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color var(--transition);
+}
+
+.contact-link:hover .contact-link-value { color: var(--white); }
+
+.contact-note {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+
+.contact-note h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+
+.contact-note p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 2.5rem 2rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
+footer strong { color: rgba(255,255,255,0.85); }
+
+/* ===========================
+   SCROLL ANIMATIONS
+=========================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-bg { width: 100%; clip-path: none; opacity: 0.4; }
+  .hero-visual { order: -1; }
+  .hero-illustration { max-width: 300px; }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--white); padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); gap: 1.5rem; }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: flex; }
+}
+
+@media (max-width: 600px) {
+  section { padding: 70px 1.2rem; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .hero-stats { gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===========================
+     NAVBAR
+=========================== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#accueil" class="nav-logo">N<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#contact" class="nav-cta">Me contacter</a></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ===========================
+     HERO / ACCUEIL
+=========================== -->
+<section id="accueil">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-accent"></div>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">Disponible pour une alternance</div>
+      <h1 class="hero-name">Nada<em>Bouchtita</em></h1>
+      <p class="hero-title">
+        <strong>Étudiante en 3e année en informatique</strong>, actuellement à la recherche d'une alternance en <strong>cybersécurité</strong>.
+      </p>
+      <p class="hero-desc">
+        Intéressée par la cybersécurité dans sa globalité, je suis ouverte à découvrir et à évoluer dans tous les domaines liés à ce secteur.
+
+        Motivée, curieuse et rigoureuse, je souhaite développer des compétences techniques solides à travers une expérience concrète en alternance. Motivée, curieuse et en constante progression dans le domaine de la cybersécurité.
+      </p>
+      <div class="hero-actions">
+        <a href="#projets" class="btn-primary">Voir mes projets</a>
+        <a href="#contact" class="btn-outline">Me contacter</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat-item">
+          <div class="hero-stat-number">4+</div>
+          <div class="hero-stat-label">Projets</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-number">3ᵉ Année</div>
+          <div class="hero-stat-label">Informatique</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-number">IELTS 7</div>
+          <div class="hero-stat-label">Anglais C1</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-illustration">
+      <img src="assets/ninja-girl.png.png" alt="Ninja girl cybersecurity" style="width:100%;max-width:460px;height:auto;display:block;margin:0 auto;"/>
+    </div>
+  </section>
+
+<!-- ===========================
+     À PROPOS
+=========================== -->
+<section id="apropos">
+  <div class="section-inner">
+    <span class="section-tag">01 — À propos</span>
+    <h2 class="section-title">Mon profil</h2>
+    <div class="section-line"></div>
+    <div class="about-grid reveal">
+       <div class="about-text">
+        <p>Étudiante en 3ᵉ année en informatique, je suis à la recherche d'une alternance en cybersécurité, avec l'envie de m'investir dans un domaine devenu essentiel aujourd'hui.</p>
+        <p>Avec le développement du numérique, une grande partie de nos vies passe par les systèmes informatiques. Je trouve important de comprendre comment ils fonctionnent, mais surtout comment les sécuriser, afin de protéger les données, la vie privée et les utilisateurs.</p>
+        <p>À travers mes projets, j'ai commencé à découvrir la cybersécurité et à développer un réel intérêt pour ce domaine. J'apprécie le fait de devoir comprendre, analyser et résoudre des problématiques concrètes.</p>
+        <p>Curieuse et motivée, je souhaite continuer à apprendre, progresser et acquérir de l'expérience afin de construire un profil solide dans ce domaine.</p>
+      </div>
+      <div class="about-highlights">
+        <h3>Points clés</h3>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <p>Recherche d'alternance en cybersécurité</p>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <p>Intérêt pour les réseaux et systèmes</p>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <p>Apprentissage par projets concrets</p>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <p>Profil sérieux, motivé et rigoureux</p>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <p>Anglais C1 — IELTS 7/9</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     COMPÉTENCES
+=========================== -->
+<section id="competences">
+  <div class="section-inner">
+    <span class="section-tag">02 — Compétences</span>
+    <h2 class="section-title">Savoir-faire technique</h2>
+    <div class="section-line"></div>
+    <div class="skills-grid">
+
+      <div class="skill-card reveal reveal-delay-3">
+        <div class="skill-card-icon icon-steel">🔐</div>
+        <h3>Cybersécurité</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Analyse de mot de passe</span>
+          <span class="skill-tag">zxcvbn</span>
+          <span class="skill-tag">Détection de fuites</span>
+          <span class="skill-tag">Analyse de risque</span>
+          <span class="skill-tag">Phishing</span>
+          <span class="skill-tag">Scan réseau</span>
+          <span class="skill-tag">Nmap</span>
+          <span class="skill-tag">Wireshark</span>
+          <span class="skill-tag">Metasploit</span>
+          <span class="skill-tag">Kali Linux</span>
+          <span class="skill-tag">Firewall / UFW</span>
+          <span class="skill-tag">API REST</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-card-icon icon-navy">🌐</div>
+        <h3>Réseaux & Systèmes</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">TCP/IP</span>
+          <span class="skill-tag">IPv4 / IPv6</span>
+          <span class="skill-tag">DHCP</span>
+          <span class="skill-tag">DNS</span>
+          <span class="skill-tag">VLAN</span>
+          <span class="skill-tag">Routage</span>
+          <span class="skill-tag">Diagnostic réseau</span>
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">Windows</span>
+          <span class="skill-tag">Droits & utilisateurs</span>
+          <span class="skill-tag">Virtualisation</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-card-icon icon-steel">💻</div>
+        <h3>Programmation</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">C</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">PHP</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal reveal-delay-3">
+        <div class="skill-card-icon icon-accent">🗄️</div>
+        <h3>Base de données</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Modélisation</span>
+          <span class="skill-tag">Merise</span>
+          <span class="skill-tag">Algèbre relationnelle</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">Requêtes SQL</span>
+          <span class="skill-tag">Import / Export CSV</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-card-icon icon-olive">🛠️</div>
+        <h3>Outils</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">Arduino IDE</span>
+          <span class="skill-tag">MySQL Workbench</span>
+          <span class="skill-tag">Cisco Packet Tracer</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-card-icon icon-slate">🌍</div>
+        <h3>Langues</h3>
+        <div class="skill-tags">
+          <span class="skill-tag lang">Français C1</span>
+          <span class="skill-tag lang">Anglais C1</span>
+          <span class="skill-tag lang">IELTS 7 / 9</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     PROJETS
+=========================== -->
+<section id="projets">
+  <div class="section-inner">
+    <span class="section-tag">03 — Projets</span>
+    <h2 class="section-title">Réalisations</h2>
+    <div class="section-line"></div>
+    <p class="projects-intro">Une sélection de projets personnels et académiques illustrant mes compétences en cybersécurité, réseaux, développement et bases de données.</p>
+
+    <p class="projects-label">Projets personnels</p>
+    <div class="projects-grid">
+
+      <div class="project-card reveal reveal-delay-1">
+        <span class="project-number">01 / Personnel</span>
+        <h3 class="project-title">Lab Kali Linux – Analyse et sécurisation réseau</h3>
+        <p class="project-desc">Mise en place d’un laboratoire virtuel basé sur Kali Linux permettant de simuler un réseau local et d’explorer les bases de la cybersécurité. Ce projet met en avant l’utilisation d’outils de scan pour identifier les services actifs, l’analyse du trafic réseau, l’exploitation de vulnérabilités dans un environnement contrôlé ainsi que la mise en place de mesures de protection comme le filtrage des ports.</p>
+        <div class="project-tags">
+          <span class="project-tag">Linux</span>
+          <span class="project-tag">Kali</span>
+          <span class="project-tag">Nmap</span>
+          <span class="project-tag">VirtualBox</span>
+          <span class="project-tag">Metasploitable</span>
+          <span class="project-tag">Wireshark</span>
+          <span class="project-tag">UFW / Firewall</span>
+        </div>
+        <a href="kali.html" class="project-link">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="project-card reveal reveal-delay-2">
+        <span class="project-number">02 / Personnel</span>
+        <h3 class="project-title">Outil web de sensibilisation à la cybersécurité</h3>
+        <p class="project-desc">Développement d'une interface web inspirée d'un tableau de bord de cybersécurité, intégrant plusieurs modules liés à l'analyse de mots de passe, aux fuites de données, au phishing et à l'analyse de site web. Ce projet met en avant la conception d'une interface moderne orientée sécurité.</p>
+        <div class="project-tags">
+          <span class="project-tag">Phishing</span>
+          <span class="project-tag">API REST</span>
+          <span class="project-tag">Analyse de risque</span>
+          <span class="project-tag">Détection de fuites</span>
+          <span class="project-tag">zxcvbn</span>
+        </div>
+        <a href="web.html" class="project-link">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+    </div>
+
+    <p class="projects-label" style="margin-top:2.5rem;">Projets académiques</p>
+    <div class="projects-grid">
+
+      <div class="project-card academic reveal reveal-delay-1">
+        <span class="project-number">03 / Académique</span>
+        <h3 class="project-title">Architecture réseau multi-sites sous Packet Tracer</h3>
+        <p class="project-desc">Conception et configuration d'une architecture réseau complète sous Cisco Packet Tracer. Réalisation d'un plan d'adressage, configuration de routeurs, switchs, DHCP, DNS, VLAN, trunking, routage inter-VLAN, sécurisation des accès, Wi-Fi, IPv6 et tunnel vers un datacenter.</p>
+        <div class="project-tags">
+          <span class="project-tag">Cisco Packet Tracer</span>
+          <span class="project-tag">VLAN</span>
+          <span class="project-tag">DHCP / DNS</span>
+          <span class="project-tag">IPv4 / IPv6</span>
+          <span class="project-tag">Routage</span>
+          <span class="project-tag">SSH</span>
+        </div>
+        <a href="Architecture.html" class="project-link">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="project-card academic reveal reveal-delay-2">
+        <span class="project-number">04 / Académique</span>
+        <h3 class="project-title">Base de données sur la qualité de l'air</h3>
+        <p class="project-desc">Conception et implémentation d'une base de données relationnelle autour de la qualité de l'air en France. Réalisation du modèle conceptuel, logique et physique, création des tables, insertion de données réalistes, écriture de requêtes SQL complexes et démonstration fonctionnelle.</p>
+        <div class="project-tags">
+          <span class="project-tag">Merise</span>
+          <span class="project-tag">MySQL</span>
+          <span class="project-tag">SQL</span>
+          <span class="project-tag">Modélisation</span>
+          <span class="project-tag">CSV</span>
+        </div>
+        <a href="bdd.html" class="project-link">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     PARCOURS
+=========================== -->
+<section id="parcours">
+  <div class="section-inner">
+    <span class="section-tag">04 — Formation</span>
+    <h2 class="section-title">Parcours académique</h2>
+    <div class="section-line"></div>
+    <div style="max-width: 720px;">
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Depuis septembre 2023</div>
+          <div class="timeline-card">
+            <div class="timeline-school">CESI campus de Toulouse — Labège</div>
+            <h3 class="timeline-title">Classe préparatoire intégrée — Informatique</h3>
+            <p class="timeline-desc">Formation en informatique avec projets académiques autour des réseaux et systèmes, de la programmation orientée objet, de la modélisation de bases de données, du développement web et du traitement du signal.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal reveal-delay-2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Septembre 2021 — Juin 2023</div>
+          <div class="timeline-card">
+            <div class="timeline-school">Université UBO — Brest</div>
+            <h3 class="timeline-title">Licence en Mathématiques, Physique et Informatique</h3>
+            <p class="timeline-desc">Solides fondements scientifiques en mathématiques, physique et informatique théorique. Développement de la rigueur analytique et de la pensée logique.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     CONTACT
+=========================== -->
+<section id="contact">
+  <div class="section-inner">
+    <span class="section-tag">05 — Contact</span>
+    <h2 class="section-title">Travaillons ensemble</h2>
+    <div class="section-line"></div>
+    <div class="contact-grid reveal">
+      <div>
+        <div class="available-badge">Disponible pour une alternance</div>
+        <p class="contact-intro">Je suis actuellement à la recherche d'une alternance en cybersécurité. N'hésitez pas à me contacter pour échanger sur mon profil, mes projets ou une opportunité.</p>
+        <div class="contact-links">
+          <a href="mailto:nadabouchtita8@gmail.com" class="contact-link">
+            <div class="contact-link-icon">✉️</div>
+            <div class="contact-link-info">
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-value">nadabouchtita8@gmail.com</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/nada-bouchtita/" target="_blank" class="contact-link">
+            <div class="contact-link-icon">
+              <img src="assets/linkedin.webp" alt="LinkedIn" style="width:22px;height:22px;object-fit:contain;border-radius:4px;">
+            </div>
+            <div class="contact-link-info">
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-value">linkedin.com/in/nada-bouchtita</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-note">
+        <h3>À propos de cette alternance</h3>
+        <p>À la recherche d’une alternance en cybersécurité à partir de septembre 2026, je suis ouverte à différentes missions dans ce domaine, que ce soit en sécurité des réseaux, analyse de vulnérabilités, sécurité des systèmes ou tout autre domaine lié à la cybersécurité.</p>
+        <br>
+        <p>Disponible pour un entretien ou toute question sur mon parcours.</p>
+        <br>
+        <a href="mailto:nadabouchtita8@gmail.com" class="btn-primary" style="font-size:0.82rem; padding: 0.75rem 1.6rem;">Envoyer un message →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     FOOTER
+=========================== -->
+<footer>
+  <p>© 2026 <strong>Nada Bouchtita</strong> — Portfolio Cybersécurité · Tous droits réservés</p>
+</footer>
+
+<!-- ===========================
+     JAVASCRIPT
+=========================== -->
+<script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Mobile nav toggle
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+// Close mobile nav on link click
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+revealEls.forEach(el => observer.observe(el));
+
+// Active nav link highlighting
+const sections = document.querySelectorAll('section[id]');
+const navAnchors = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    if (window.scrollY >= section.offsetTop - 100) {
+      current = section.getAttribute('id');
+    }
+  });
+  navAnchors.forEach(a => {
+    a.style.color = '';
+    if (a.getAttribute('href') === '#' + current) {
+      a.style.color = 'var(--navy)';
+    }
+  });
+});
+</script>
+</body>
+</html>
